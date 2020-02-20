@@ -1,7 +1,7 @@
 import socket
 import sys
 
-host = 'localhost'
+host = '172.24.186.52'
 port = 1024
 
 # create socket
@@ -12,16 +12,17 @@ except socket.error:
     print('Failed to create socket')
     sys.exit()
 
-print('# Getting remote IP address') 
-try:
-    remote_ip = socket.gethostbyname( host )
-except socket.gaierror:
-    print('Hostname could not be resolved. Exiting')
-    sys.exit()
+# print('# Getting remote IP address') 
+# try:
+#     remote_ip = socket.gethostbyname( host )
+# except socket.gaierror:
+#     print('Hostname could not be resolved. Exiting')
+#     sys.exit()
 
 # Connect to remote server
-print('# Connecting to server, ' + host + ' (' + remote_ip + ')')
-s.connect((remote_ip , port))
+#print('# Connecting to server, ' + host + ' (' + remote_ip + ')')
+print('# Connecting to server, ' + host)
+s.connect((host , port))
 
 # Get text input from the user
 sentence = input('Input lowercase sentence:')
@@ -40,11 +41,22 @@ except socket.error:
 # Receive data
 print('# Receiving data from server')
 full_reply = ''
-while True:
-    reply = s.recv(8)
-    if len(reply) == 0:
-        break
-    full_reply += reply.decode()
+
+ # Look for the response
+amount_received = 0
+amount_expected = len(sentence)
+
+while amount_received < amount_expected:
+    data = s
+    .recv(2048)
+    amount_received += len(data)
+    print('received ', str(data.decode("utf-8")))
+# while True:
+#     reply = s.recv(8)
+#     if len(reply) == 0:
+#         break
+#     full_reply += reply.decode()
+    
 
 print (full_reply)
 
