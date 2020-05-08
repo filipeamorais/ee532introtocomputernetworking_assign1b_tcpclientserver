@@ -2,7 +2,7 @@
 
 Two applications, one the server and the other the client, to communicate over TCP.
 
-#Running
+# Running
 
 Open the bash console and run each one through the Python command for running a code:
 ```bash
