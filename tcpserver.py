@@ -1,7 +1,7 @@
 import socket
 import sys
 
-serverPort = 1024
+serverPort = 65531
 
 # create socket
 print('# Creating socket')

@@ -1,8 +1,8 @@
 import socket
 import sys
 
-host = '172.24.186.52'
-port = 1024
+host = '67.9.1.190'
+port = 6001
 
 # create socket
 print('# Creating socket')
@@ -47,8 +47,7 @@ amount_received = 0
 amount_expected = len(sentence)
 
 while amount_received < amount_expected:
-    data = s
-    .recv(2048)
+    data = s.recv(2048)
     amount_received += len(data)
     print('received ', str(data.decode("utf-8")))
 # while True:
